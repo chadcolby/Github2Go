@@ -9,14 +9,15 @@
 #import "bmwReposSearchViewController.h"
 #import "bmwNetworkController.h"
 #import "bmwDetailViewController.h"
+#import "bmwWebViewController.h"
 
 @interface bmwReposSearchViewController ()
+
 @property (weak, nonatomic) IBOutlet UISearchBar *reposSearchBar;
-
-
 @property (strong, nonatomic) NSArray *reposArray;
 @property (strong, nonatomic) NSDictionary *reposDictionary;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -41,6 +42,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
+
+
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,10 +66,9 @@
     
     
     self.reposArray = [[bmwNetworkController sharedController] reposSearchArray:self.reposSearchBar.text];
-   
     [self.reposSearchBar resignFirstResponder];
     [self.tableView reloadData];
-    
+
 }
 
 #pragma mark - Table view data source
@@ -92,12 +99,22 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"pushToDetails"]) {
-        [[segue destinationViewController] setDetailItem:self.reposArray];
-    }
+    if ([[segue identifier] isEqualToString:@"pushToWeb"]) {
+        
+    
+    bmwWebViewController *destination = [segue destinationViewController];
+    destination.htmlString = [[NSString alloc] init];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    self.reposDictionary = [self.reposArray objectAtIndex:indexPath.row];
+    destination.htmlString = [self.reposDictionary objectForKey:@"html_url"];
+    
+    [destination.view addSubview:destination.webView];
+    [destination loadWebView:destination.htmlString];
+        
+     }
 }
 
 

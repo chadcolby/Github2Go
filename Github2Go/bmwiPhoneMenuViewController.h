@@ -15,5 +15,6 @@
 
 - (void)openMenu;
 - (void)closeMenu;
+- (UIColor *)makeColor:(CGFloat)red AndGreen:(CGFloat)green AndBlue:(CGFloat)blue;
 
 @end

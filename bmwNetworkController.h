@@ -12,7 +12,7 @@
 
 + (bmwNetworkController *)sharedController;
 
-- (NSArray *)usersSearchArray:(NSString *)searchString;
+- (NSMutableArray *)usersSearchArray:(NSString *)searchString;
 - (NSArray *)reposSearchArray:(NSString *)searchString;
 
 @end

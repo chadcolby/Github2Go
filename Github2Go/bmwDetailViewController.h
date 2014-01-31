@@ -11,6 +11,6 @@
 @interface bmwDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UIWebView *repoWebView;
+
 
 @end

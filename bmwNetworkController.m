@@ -21,7 +21,7 @@
     return shared;
 }
 
-- (NSArray *)usersSearchArray:(NSString *)searchString
+- (NSMutableArray *)usersSearchArray:(NSString *)searchString
 {
     searchString = [NSString stringWithFormat:@"https://api.github.com/search/users?q=%@", searchString];
     searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

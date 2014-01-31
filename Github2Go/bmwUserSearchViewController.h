@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface bmwUserSearchViewController : UIViewController
+@interface bmwUserSearchViewController : UIViewController <UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *usersCollectionView;
+@property (weak, nonatomic) IBOutlet UISearchBar *usersSearchBar;
 
 @end

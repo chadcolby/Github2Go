@@ -7,9 +7,12 @@
 //
 
 #import "bmwUserSearchViewController.h"
-
+#import "bmwUsersCell.h"
+#import "bmwNetworkController.h"
 
 @interface bmwUserSearchViewController ()
+
+@property (strong, nonatomic) NSMutableArray *userArray;
 
 @end
 
@@ -19,7 +22,9 @@
 {
     self = [super init];
     if (self) {
-        // Custom initialization
+        
+        self.usersCollectionView.backgroundColor = [UIColor greenColor];
+
     }
     return self;
 }
@@ -27,8 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
+    
+    self.usersSearchBar.delegate = self;
+    self.usersCollectionView.delegate = self;
+    self.usersCollectionView.dataSource = self;
+    
+    
+    self.userArray = [[NSMutableArray alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,41 +48,30 @@
 
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    // Return the number of sections.
-    return 0;
+    self.userArray = [[bmwNetworkController sharedController] usersSearchArray:self.usersSearchBar.text];
+    NSLog(@"Users: %@", self.userArray);
+    
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - Collection View Data Source/Delegate Methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 0;
+    return self.userArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    bmwUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+
+    cell.userName.text = self.userArray[indexPath.row];
+  
     return cell;
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

@@ -36,7 +36,7 @@
     if (self.detailItem) {
         NSString *htmlString = self.detailItem[@"html_url"];
         NSLog(@"url: %@", htmlString);
-        [self.repoWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlString]]];
+
     }
 }
 

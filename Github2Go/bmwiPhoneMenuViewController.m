@@ -15,6 +15,9 @@
 @property (strong, nonatomic) bmwViewController *slideVC;
 @property (strong, nonatomic) bmwUserSearchViewController *usersSearch;
 @property (strong, nonatomic) bmwReposSearchViewController *reposSearch;
+@property (strong, nonatomic) UIColor *darkColor;
+@property (strong, nonatomic) UIColor *stringColor;
+
 
 @end
 
@@ -34,11 +37,25 @@
     [super viewDidLoad];
     self.menuArray = [NSArray arrayWithObjects:@"MENU", @"Profile", @"Users", @"Repos", @"Help", nil];
     
-    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    self.darkColor = [[UIColor alloc] init];
+    self.stringColor = [[UIColor alloc] init];
+    
+    self.darkColor = [self makeColor:45/255.f AndGreen:45/255.f AndBlue:61/255.f];
+    self.stringColor = [self makeColor:243/255.f AndGreen:195/255.f AndBlue:47/255.f];
+
+    
+    self.tableView.backgroundColor = self.darkColor;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     [self createViewController];
     [self panGestureSetUp];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +63,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (UIColor *)makeColor:(CGFloat)red AndGreen:(CGFloat)green AndBlue:(CGFloat)blue
+{
+    UIColor *color = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.f];
+    return color;
+}
+
 
 #pragma mark - Set Up Slide View Controller
 
@@ -173,9 +197,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = self.stringColor;
     cell.textLabel.font = [UIFont fontWithName:@"Courier" size:17.0f];
-    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = self.darkColor;
     
     return cell;
 }
@@ -191,23 +215,30 @@
 {
     //bmwUserSearchViewController *usersSearchViewController = [[bmwUserSearchViewController alloc] init];
     switch (indexPath.row) {
-  case 2:
+        case 2:
+        {
             self.usersSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"usersSearch"];
-            
             [self addChildViewController:self.usersSearch];
             self.usersSearch.view.frame = self.tableView.frame;
             [self.view addSubview:self.usersSearch.view];
             [self.usersSearch didMoveToParentViewController:self];
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     
-    break;
-case 3:
+            break;}
+        case 3:
+        {
+            
             self.reposSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"reposSearch"];
             [self addChildViewController:self.reposSearch];
-            self.reposSearch.view.frame = self.tableView.frame;
-            [self.view addSubview:self.reposSearch.view];
-            [self.reposSearch didMoveToParentViewController:self];
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                self.reposSearch.view.frame = self.tableView.frame;
+                [self.view addSubview:self.reposSearch.view];
+                [self.reposSearch didMoveToParentViewController:self];
+                [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+            }];
+            
+            break;}
             
   default:
     break;
