@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D54E1C7189A162F00FCA7EF /* bmwWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D54E1C6189A162F00FCA7EF /* bmwWebViewController.m */; };
+		8D94E2E3189C683300775A33 /* Prime Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8D94E2E2189C683300775A33 /* Prime Light.otf */; };
 		8DD4CE6B1899A55C00FBAEB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD4CE6A1899A55C00FBAEB6 /* Foundation.framework */; };
 		8DD4CE6D1899A55C00FBAEB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD4CE6C1899A55C00FBAEB6 /* CoreGraphics.framework */; };
 		8DD4CE6F1899A55C00FBAEB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD4CE6E1899A55C00FBAEB6 /* UIKit.framework */; };
@@ -29,6 +30,7 @@
 		8DD4CEC01899BA5C00FBAEB6 /* bmwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD4CEBF1899BA5C00FBAEB6 /* bmwViewController.m */; };
 		8DD4CEC21899BD9A00FBAEB6 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8DD4CEC11899BD9A00FBAEB6 /* image.jpeg */; };
 		8DEE795B189B1DCD0011348C /* bmwUsersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEE795A189B1DCD0011348C /* bmwUsersCell.m */; };
+		8DEE795E189B27430011348C /* bmwUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEE795D189B27430011348C /* bmwUsers.m */; };
 		8DF0B1C51899CB9800E689DF /* bmwUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF0B1C41899CB9800E689DF /* bmwUserSearchViewController.m */; };
 		8DF0B1C81899CF7E00E689DF /* bmwReposSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF0B1C71899CF7E00E689DF /* bmwReposSearchViewController.m */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,7 @@
 /* Begin PBXFileReference section */
 		8D54E1C5189A162F00FCA7EF /* bmwWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bmwWebViewController.h; sourceTree = "<group>"; };
 		8D54E1C6189A162F00FCA7EF /* bmwWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bmwWebViewController.m; sourceTree = "<group>"; };
+		8D94E2E2189C683300775A33 /* Prime Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Prime Light.otf"; path = "../Prime Light.otf"; sourceTree = "<group>"; };
 		8DD4CE671899A55C00FBAEB6 /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD4CE6A1899A55C00FBAEB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DD4CE6C1899A55C00FBAEB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,6 +80,8 @@
 		8DD4CEC11899BD9A00FBAEB6 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		8DEE7959189B1DCD0011348C /* bmwUsersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bmwUsersCell.h; sourceTree = "<group>"; };
 		8DEE795A189B1DCD0011348C /* bmwUsersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bmwUsersCell.m; sourceTree = "<group>"; };
+		8DEE795C189B27430011348C /* bmwUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bmwUsers.h; sourceTree = "<group>"; };
+		8DEE795D189B27430011348C /* bmwUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bmwUsers.m; sourceTree = "<group>"; };
 		8DF0B1C31899CB9800E689DF /* bmwUserSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bmwUserSearchViewController.h; sourceTree = "<group>"; };
 		8DF0B1C41899CB9800E689DF /* bmwUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bmwUserSearchViewController.m; sourceTree = "<group>"; };
 		8DF0B1C61899CF7E00E689DF /* bmwReposSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bmwReposSearchViewController.h; sourceTree = "<group>"; };
@@ -156,6 +161,7 @@
 			children = (
 				8DD4CEC11899BD9A00FBAEB6 /* image.jpeg */,
 				8DD4CE721899A55C00FBAEB6 /* Github2Go-Info.plist */,
+				8D94E2E2189C683300775A33 /* Prime Light.otf */,
 				8DD4CE731899A55C00FBAEB6 /* InfoPlist.strings */,
 				8DD4CE761899A55C00FBAEB6 /* main.m */,
 				8DD4CE781899A55C00FBAEB6 /* Github2Go-Prefix.pch */,
@@ -210,6 +216,8 @@
 		8DD4CEA81899AB6A00FBAEB6 /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				8DEE795C189B27430011348C /* bmwUsers.h */,
+				8DEE795D189B27430011348C /* bmwUsers.m */,
 				8DEE7959189B1DCD0011348C /* bmwUsersCell.h */,
 				8DEE795A189B1DCD0011348C /* bmwUsersCell.m */,
 				8DD4CEBE1899BA5C00FBAEB6 /* bmwViewController.h */,
@@ -302,6 +310,7 @@
 				8DD4CE811899A55C00FBAEB6 /* Main_iPad.storyboard in Resources */,
 				8DD4CEC21899BD9A00FBAEB6 /* image.jpeg in Resources */,
 				8DD4CE891899A55C00FBAEB6 /* Images.xcassets in Resources */,
+				8D94E2E3189C683300775A33 /* Prime Light.otf in Resources */,
 				8DD4CE7E1899A55C00FBAEB6 /* Main_iPhone.storyboard in Resources */,
 				8DD4CE751899A55C00FBAEB6 /* InfoPlist.strings in Resources */,
 			);
@@ -327,6 +336,7 @@
 				8D54E1C7189A162F00FCA7EF /* bmwWebViewController.m in Sources */,
 				8DF0B1C51899CB9800E689DF /* bmwUserSearchViewController.m in Sources */,
 				8DD4CEAB1899ABAD00FBAEB6 /* bmwNetworkController.m in Sources */,
+				8DEE795E189B27430011348C /* bmwUsers.m in Sources */,
 				8DD4CE771899A55C00FBAEB6 /* main.m in Sources */,
 				8DF0B1C81899CF7E00E689DF /* bmwReposSearchViewController.m in Sources */,
 				8DD4CEB41899B09A00FBAEB6 /* bmwiPhoneMenuViewController.m in Sources */,

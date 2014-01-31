@@ -10,9 +10,13 @@
 #import "bmwUsersCell.h"
 #import "bmwNetworkController.h"
 
+#import "bmwUsers.h"
+
 @interface bmwUserSearchViewController ()
 
-@property (strong, nonatomic) NSMutableArray *userArray;
+@property (strong, nonatomic) NSArray *searchArray;
+@property (strong, nonatomic) NSMutableArray *usersArray;
+@property (strong, nonatomic) UIColor *darkColor;
 
 @end
 
@@ -22,8 +26,6 @@
 {
     self = [super init];
     if (self) {
-        
-        self.usersCollectionView.backgroundColor = [UIColor greenColor];
 
     }
     return self;
@@ -32,13 +34,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.usersSearchBar.delegate = self;
     self.usersCollectionView.delegate = self;
     self.usersCollectionView.dataSource = self;
+    self.darkColor = [UIColor colorWithRed:45/255.f green:45/255.f  blue:61/255.f alpha:1.f];
+    self.usersCollectionView.backgroundColor = self.darkColor;
     
-    
-    self.userArray = [[NSMutableArray alloc] init];
+    self.searchArray = [[NSArray alloc] init];
+    self.usersArray = [[NSMutableArray alloc] init];
     
 }
 
@@ -50,28 +54,49 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    self.userArray = [[bmwNetworkController sharedController] usersSearchArray:self.usersSearchBar.text];
-    NSLog(@"Users: %@", self.userArray);
-    
+    self.searchArray = [[bmwNetworkController sharedController] usersSearchArray:self.usersSearchBar.text];
+
+    [self.usersSearchBar resignFirstResponder];
+
+    [self createUsersArray:self.searchArray];
+
 }
 
 #pragma mark - Collection View Data Source/Delegate Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.userArray.count;
+    return self.usersArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     bmwUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-
-    cell.userName.text = self.userArray[indexPath.row];
-  
+    
+    bmwUsers *user = self.usersArray[indexPath.row];
+    cell.backgroundColor = self.darkColor;
+    cell.userName.text = user.userName;
+    
     return cell;
+
 }
 
+#pragma mark - Download methods
 
+- (void)createUsersArray:(NSArray *)arrayToSearch
+{
+    for (NSDictionary *tempDict in arrayToSearch)
+    {
+        bmwUsers *user = [[bmwUsers alloc] init];
+        user.userName = tempDict[@"login"];
+        user.avatarURL = tempDict[@"avatar_url"];
+        
+        [self.usersArray addObject:user];
+        
+    }
+    
+        [self.usersCollectionView reloadData];
+}
 
 @end

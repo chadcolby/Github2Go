@@ -10,7 +10,9 @@
 
 @interface bmwUsersCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UIImage *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) NSString *userImageURL;
+
 
 @end

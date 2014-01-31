@@ -17,7 +17,8 @@
 @property (strong, nonatomic) NSArray *reposArray;
 @property (strong, nonatomic) NSDictionary *reposDictionary;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) UIColor *darkColor;
+@property (strong, nonatomic) UIColor *textColor;
 
 @end
 
@@ -27,7 +28,7 @@
 {
     self = [super init];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -41,7 +42,9 @@
     self.reposSearchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    self.darkColor = [UIColor colorWithRed:45/255.f green:45/255.f  blue:61/255.f alpha:1.f];
+    self.textColor = [UIColor colorWithRed:243/255.f green:195/255.f  blue:47/255.f alpha:1.f];
+    self.tableView.backgroundColor = self.darkColor;
 
 
 }
@@ -91,6 +94,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     self.reposDictionary = [self.reposArray objectAtIndex:indexPath.row];
+    cell.backgroundColor = self.darkColor;
+    cell.textLabel.textColor = self.textColor;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     cell.textLabel.text = [self.reposDictionary objectForKey:@"name"];
     
     return cell;

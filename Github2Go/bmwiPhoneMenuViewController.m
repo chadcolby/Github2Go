@@ -42,13 +42,15 @@
     
     self.darkColor = [self makeColor:45/255.f AndGreen:45/255.f AndBlue:61/255.f];
     self.stringColor = [self makeColor:243/255.f AndGreen:195/255.f AndBlue:47/255.f];
-
     
     self.tableView.backgroundColor = self.darkColor;
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     [self createViewController];
     [self panGestureSetUp];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,7 +80,7 @@
     self.slideVC = [self.storyboard instantiateViewControllerWithIdentifier:@"slideViewController"];
     //[self.slideVC setDelegate:self];
     self.slideVC.view.backgroundColor = [UIColor blackColor];
-    self.slideVC.view.alpha = 0.88;
+    self.slideVC.view.alpha = 0.85;
     
     [self addChildViewController:self.slideVC];
     self.slideVC.view.frame = self.tableView.frame;
@@ -102,7 +104,6 @@
 {
     UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)sender;
     
-    //    CGPoint velocity = [panGesture velocityInView:self.view];
     CGPoint trans = [panGesture translationInView:self.view];
     
     // Check to make sure the gesture is to the right to revel menu.
@@ -198,7 +199,8 @@
 
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
     cell.textLabel.textColor = self.stringColor;
-    cell.textLabel.font = [UIFont fontWithName:@"Courier" size:17.0f];
+    cell.textLabel.font = [UIFont fontWithName:@"Prime-Light" size:17.0f];
+    cell.accessoryType = UITableViewCellAccessoryNone;
     cell.backgroundColor = self.darkColor;
     
     return cell;
@@ -213,8 +215,17 @@
 #pragma mark - Navigation
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //bmwUserSearchViewController *usersSearchViewController = [[bmwUserSearchViewController alloc] init];
     switch (indexPath.row) {
+        case 0:
+        {
+            [self.tableView reloadData];
+            
+            break;}
+        case 1:
+        {
+            [self.tableView reloadData];
+            
+            break;}
         case 2:
         {
             self.usersSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"usersSearch"];
@@ -237,6 +248,11 @@
                 [self.reposSearch didMoveToParentViewController:self];
                 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
             }];
+            
+            break;}
+        case 4:
+        {
+            [self.tableView reloadData];
             
             break;}
             
