@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "bmwWebViewController.h"
+
 
 @interface bmwUserSearchViewController : UIViewController <UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *usersCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *usersSearchBar;
+@property (strong, nonatomic) bmwWebViewController *webView;
 
 @end

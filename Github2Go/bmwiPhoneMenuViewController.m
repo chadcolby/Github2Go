@@ -47,6 +47,8 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
     [self createViewController];
     [self panGestureSetUp];
     
@@ -199,7 +201,7 @@
 
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
     cell.textLabel.textColor = self.stringColor;
-    cell.textLabel.font = [UIFont fontWithName:@"Prime-Light" size:17.0f];
+    cell.textLabel.font = [UIFont fontWithName:@"Prime-Light" size:20.0f];
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.backgroundColor = self.darkColor;
     

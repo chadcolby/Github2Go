@@ -10,19 +10,19 @@
 
 @implementation bmwUsers
 
-- (UIImage *)downloadPicture
+- (void)downloadProfilePicture
 {
-    self.currenlyDownloadingPicture = YES;
+ 
+    self.pictureIsDownloading = YES;
     
     [self.downloadQueue addOperationWithBlock:^{
+        NSData *pictureData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.avatarURL]];
+        self.profilePicture = [UIImage imageWithData:pictureData];
         
-        NSData *imageData = [NSData dataWithContentsOfFile:self.avatarURL];
-        
-        self.userImage = [UIImage imageWithData:imageData];
-        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DOWNLOADING object:nil userInfo:@{@"user": self}];
+        }];
     }];
-    
-    return self.userImage;
 }
 
 @end

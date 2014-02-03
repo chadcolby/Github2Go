@@ -11,12 +11,11 @@
 @interface bmwUsers : NSObject
 
 @property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) UIImage *userImage;
 @property (strong, nonatomic) NSString *avatarURL;
+@property (strong, nonatomic) UIImage *profilePicture;
+@property (readwrite, nonatomic) BOOL pictureIsDownloading;
 @property (weak, nonatomic) NSOperationQueue *downloadQueue;
-@property (readwrite, nonatomic) BOOL currenlyDownloadingPicture;
 
-- (UIImage *)downloadPicture;
-
+- (void)downloadProfilePicture;
 
 @end

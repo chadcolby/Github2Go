@@ -97,6 +97,7 @@
     cell.backgroundColor = self.darkColor;
     cell.textLabel.textColor = self.textColor;
     cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.textLabel.font = [UIFont fontWithName:@"Prime-Light" size:16.f];
     cell.textLabel.text = [self.reposDictionary objectForKey:@"name"];
     
     return cell;
